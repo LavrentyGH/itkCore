@@ -1,4 +1,8 @@
-package org.example;
+package org.example.core;
+
+import org.example.collections.FilterImpl;
+
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,4 +20,5 @@ public class Main {
         history.undo();
         System.out.println(editor.getData().toString());
     }
+
 }

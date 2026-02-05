@@ -1,4 +1,4 @@
-package org.example;
+package org.example.core;
 
 public class StringBuilderEditor {
 
@@ -8,7 +8,7 @@ public class StringBuilderEditor {
         this.data = new StringBuilder();
     }
     public StringBuilder getData() {
-        return data;
+        return new StringBuilder(data);
     }
 
     public void write (StringBuilder data) {
