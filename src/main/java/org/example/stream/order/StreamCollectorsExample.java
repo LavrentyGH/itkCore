@@ -53,14 +53,15 @@ public class StreamCollectorsExample {
 
         System.out.println("Выведите результат: список трех самых дорогих продуктов и их общая стоимость.");
         top3Cost(orders).forEach(e -> System.out.println(e.getKey() + " : " + e.getValue()));
-        double total = top3Cost(orders).stream().mapToDouble(Map.Entry::getKey).sum();
+        double total = top3Cost(orders).stream().mapToDouble(Map.Entry::getValue).sum();
         System.out.println(total);
     }
-    public static List<Map.Entry<Double, String>> top3Cost(List<Order> orders){
+    public static List<Map.Entry<String, Double>> top3Cost(List<Order> orders){
         return orders.stream()
                 .collect(Collectors
-                        .toMap(Order::getCost,
-                                Order::getProduct)).entrySet().stream()
+                        .toMap(Order::getProduct,
+                                Order::getCost,
+                                Math::max)).entrySet().stream()
                 .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
                 .limit(3)
                 .toList();
